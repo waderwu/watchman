@@ -1,0 +1,152 @@
+<resources>
+
+    <string name="app_name" translatable="false">watchman</string>
+    <string name="bullets" translatable="false">•••••••</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_about">Setup...</string>
+
+    <string name="title_activity_start">watchman</string>
+
+    <string name="accelerometer_prompt">
+    	Movement Sensitivity
+    </string>
+
+    <string name="microphone_sensitivity">
+    	Sound Sensitivity
+    </string>
+
+    <string name="timer_delay_label">
+    	Set Delay Time
+    </string>
+
+    <string name="sms_label">
+    	Send SMS or Signal message alerts
+    </string>
+
+    <string name="sms_hint">
+    	+12125551212
+    </string>
+
+    <string name="camera_prompt">
+    	Select the camera
+    </string>
+
+    <string name="secure_service_started">watchman Activated</string>
+
+    <string name="intrusion_detected">A watchman sensor was triggered (Type: %s)</string>
+    <string name="title_activity_event">EventActivity</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="intro1_title">Welcome to watchman</string>
+    <string name="intro1_desc">\"Now when the ark of human fate,\nLong baffled by the wayward wind,\nIs drifting with its peopled freight,\nSAFE watchman on the height find...\"\n-George Meredith</string>
+
+    <string name="intro2_title">watchman is for people who want to keep an eye out for intrusions into their home, office, hotel room or other private space</string>
+    <string name="intro3_desc">Turn an extra phone into a motion, sound, vibration and light detector, watching for unexpected guests and unwanted intruders</string>
+
+    <string name="intro4_desc">Get notified of intrusion events instantly and access the logs remotely or in-person later</string>
+
+    <string name="intro5_title">Your watchman is ready</string>
+    <string name="intro5_desc">Activate the app at anytime using the &gt; action button on the main screen</string>
+
+    <string name="onboarding_action_end">Finish</string>
+
+    <string name="remote_access">Remote Access</string>
+    <string name="remote_access_label">Enable remote access via Tor Onion Service</string>
+    <string name="remote_access_hint">Onion service address from Orbot</string>
+    <string name="remote_access_credential_hint">Set remote password</string>
+    <string name="camera_front">Front</string>
+    <string name="camera_back">Back</string>
+    <string name="camera_none">None</string>
+
+    <string name="action_configure">Configure</string>
+
+    <string name="main_screen_title">Your watchman Log</string>
+
+    <string name="current_noise_base">Current noise level is</string>
+    <string name="current_accel_base">Current motion level is</string>
+
+    <string name="configure_trigger_level">Slide to set detection threshold</string>
+    <string name="tune_the_sound_detection">Make some noise!</string>
+    <string name="set_your_phone_on_the_table_and_make_noises_in_the_room_to_find_the_right_level_to_detect">Set your phone on the table, and make noises in the room to find the right level to detect</string>
+
+    <string name="tune_the_accel_detection">Shake it up!</string>
+    <string name="tune_the_accel_detection_more">Move your phone around to tune the motion detection threshold</string>
+    <string name="set_a_countdown_time">Tap to change countdown</string>
+    <string name="start_now">Start Now</string>
+    <string name="start_later">View Logs</string>
+    <string name="save_number">Save Number</string>
+
+    <string name="action_cancel">Deactivate</string>
+    <string name="status_on">ACTIVE</string>
+    <string name="status_charging">Charging:</string>
+    <string name="you_will_receive_a_text_when_the_app_hears_or_sees_something">You will receive a text when the app hears or sees something</string>
+    <string name="know_immediately_when_watchman_detects_something">Know immediately when watchman detects something</string>
+    <string name="phone_saved">Phone number saved!</string>
+    <string name="detection_events">detection events</string>
+    <string name="data_speed">SPEED</string>
+    <string name="data_light">LIGHT</string>
+    <string name="data_pressure">PRESSURE</string>
+    <string name="data_power">POWER</string>
+    <string name="share_event_action">Share event...</string>
+    <string name="signal_test_message">This is a test message from watchman</string>
+    <string name="send_test_message">Send Test Message</string>
+    <string name="verify">Verify</string>
+    <string name="register">Register</string>
+    <string name="activate_signal">Activate Signal</string>
+    <string name="verify_signal">Verify Signal</string>
+    <string name="enter_verification">Enter the verification code you received from the Signal registration step</string>
+    <string name="cancel">Cancel</string>
+    <string name="register_title">Register with Signal</string>
+    <string name="register_signal_desc">Enter a phone number to register with Signal, to use to send secure notifications. You can use this device\'s phone number or setup a virtual number.\n\nWARNING: If this number is already configured with a Signal app install, it will stop working there, and only work within watchman.</string>
+    <string name="phone_hint">+12125551212</string>
+
+    <string name="menu_licenses">Licenses...</string>
+    <string name="sensor_light">Ambient Light</string>
+    <string name="sensor_accel">Motion (Accelerometer)</string>
+    <string name="sensor_camera">Motion (Camera)</string>
+    <string name="sensor_sound">Microphone</string>
+    <string name="sensor_power">USB Power</string>
+    <string name="sensor_bump">Bump (Accelerometer)</string>
+    <string name="sensor_camera_video">Motion (Video)</string>
+    <string name="sensor_unknown">Unknown</string>
+
+    <string name="settings">Settings</string>
+    <string name="remote_access_onion_error">This feature requires the Orbot: Tor for Android app to be installed.</string>
+
+    <!--Preference Settings -->
+    <string name="hint_number" translatable="false">+12125551212</string>
+    <string name="sms_dialog_summary">Remote phone number to send notifications to</string>
+    <string name="sms_dialog_message">Enter a remote phone number to send alert notifications to</string>
+    <string name="signal_dialog_summary">A phone number to send from using Signal</string>
+    <string name="verification_dialog_summary">Tap to verify your Signal number</string>
+    <string name="send_message_dialog">Enter a phone number to send a test alert notification message to</string>
+    <string name="send_text_message">Test notifications...</string>
+    <string name="service_address">Service Address</string>
+    <string name="password">Password (Required)</string>
+    <string name="signal_number">Signal Number (Local)</string>
+    <string name="phone_number">Notification Number (Remote)</string>
+    <string name="sensors">Sensors</string>
+    <string name="label_notifications">Notifications</string>
+    <string name="video_active_preference_key">video_active_preference_key</string>
+    <string name="config_video_length_label">Set Video Monitoring Length</string>
+    <string name="video_monitoring">Video Monitoring</string>
+    <string name="video_settings">Video Settings</string>
+
+    <string name="camera_sensitivity">Camera Sensitivity</string>
+
+    <string name="notification_time">Notification Time Interval</string>
+    <string name="notification_time_summary">Only send notifications at configured interval</string>
+    <string name="notification_time_dialog">Enter time (minutes) to limit notifications. \'0\' to send every notification.</string>
+    <string name="minutes">minutes(s)</string>
+    <string name="keep_watch">Keep Watch!</string>
+    <string name="camera_sensitivity_tip">Switch camera or use the slider to adjust motion detection sensitivity</string>
+    <string name="disable_battery_opt_title">Disable Battery Optimizations</string>
+    <string name="disable_battery_opt_summary">Allow app to run when screen is off</string>
+    <string name="event_deleted">Event deleted</string>
+    <string name="undo">UNDO</string>
+    <string name="remove_all_logs">Remove all logs</string>
+    <string name="events_deleted">Events deleted</string>
+
+
+</resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/fragment_camera"
+            class="org.watchman.main.ui.CameraFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/timer_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55ffffff"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/timer_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/set_a_countdown_time"
+                android:textColor="@color/White"
+                android:textSize="28dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1:00"
+                android:textColor="@color/White"
+                android:textSize="78sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnStartNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_drawable_accent"
+                android:padding="6dp"
+                android:text="@string/start_now"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnStartLater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:text="@string/start_later"
+                android:textColor="@color/White"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/btnCameraSwitch"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="20dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:srcCompat="@drawable/ic_camera_front_white" />
+
+            <ImageView
+                android:id="@+id/btnMicSettings"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="20dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:srcCompat="@drawable/ic_microphone" />
+
+            <ImageView
+                android:id="@+id/btnAccelSettings"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="20dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:srcCompat="@drawable/ic_vibrate" />
+
+            <ImageView
+                android:id="@+id/btnSettings"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="20dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:srcCompat="@drawable/ic_settings" />
+        </LinearLayout>
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

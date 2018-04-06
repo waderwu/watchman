@@ -1,0 +1,16 @@
+theme: jekyll-theme-cayman
+
+# Setup
+
+title:        "watchman: Keep Watch"
+tagline:      "watchman is for people who need a way to protect their personal spaces and possessions without compromising their own privacy."
+#baseurl:      ""
+#paginate:     0
+#locale: "en"
+
+# About/contact
+#author:
+#  name:       Guardian Project
+#  url: https://guardianproject.info/contact
+
+#show_downloads: true
