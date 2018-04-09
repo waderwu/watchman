@@ -47,6 +47,7 @@ import com.mikepenz.aboutlibraries.LibsBuilder;
 
 import org.watchman.main.model.Event;
 import org.watchman.main.service.SignalSender;
+import org.watchman.main.service.EmailSender;
 import org.watchman.main.ui.EventActivity;
 import org.watchman.main.ui.EventAdapter;
 import org.watchman.main.ui.PPAppIntro;
@@ -87,6 +88,13 @@ public class ListActivity extends AppCompatActivity {
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
+
+        EmailSender emailSender = new EmailSender("myautosender@163.com","laozi9yongmw");
+        try{
+            emailSender.sendMail("title","test","myautosender@163.com","waderwu@163.com");
+        } catch(Exception e) {
+            Log.e("error",e.getMessage(),e);
+        }
 
         if (savedInstanceState != null)
             modifyPos = savedInstanceState.getInt("modify");

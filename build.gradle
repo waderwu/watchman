@@ -115,6 +115,9 @@ dependencies {
     implementation 'com.maxproj.simplewaveform:app:1.0.0'
     implementation 'com.takisoft.fix:preference-v7:27.1.0.0'
     implementation 'com.wdullaer:materialdatetimepicker:3.5.2'
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/activation.jar')
+    implementation files('libs/mail.jar')
 
     implementation('com.mikepenz:aboutlibraries:6.0.2@aar') {
         transitive = true
