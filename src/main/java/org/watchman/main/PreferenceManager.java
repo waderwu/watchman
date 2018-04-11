@@ -59,6 +59,13 @@ public class PreferenceManager {
     public static final String REGISTER_SIGNAL = "register_signal";
     public static final String VERIFY_SIGNAL = "verify_signal";
     public static final String SEND_SMS = "send_sms";
+
+    public static final String EMAIL_ACTIVE = "email_active";
+    public static final String EMAIL_USERNAME = "email_username";
+    public static final String EMAIL_PASSWORD = "email_password";
+    public static final String REMAIL_USERNAME = "remail_username";
+    public static final String SEND_EMAIL = "send_mail";
+
     private static final String UNLOCK_CODE="unlock_code";
 	
     private static final String ACCESS_TOKEN="access_token";
@@ -96,6 +103,39 @@ public class PreferenceManager {
 
     public void setFirstLaunch(boolean firstLaunch) {
         prefsEditor.putBoolean(FIRST_LAUNCH, firstLaunch);
+        prefsEditor.commit();
+    }
+
+    public String getREmailUsername ()
+    {
+        return appSharedPrefs.getString(REMAIL_USERNAME,null);
+    }
+
+    public void setREmailUsername (String emailUsername)
+    {
+        prefsEditor.putString(REMAIL_USERNAME,emailUsername);
+        prefsEditor.commit();
+    }
+
+    public String getEmailUsername ()
+    {
+        return appSharedPrefs.getString(EMAIL_USERNAME,null);
+    }
+
+    public void setEmailUsername (String emailUsername)
+    {
+        prefsEditor.putString(EMAIL_USERNAME,emailUsername);
+        prefsEditor.commit();
+    }
+
+    public String getEmailPassword ()
+    {
+        return appSharedPrefs.getString(EMAIL_PASSWORD,null);
+    }
+
+    public void setEmailPassword (String emailPassword)
+    {
+        prefsEditor.putString(EMAIL_PASSWORD,emailPassword);
         prefsEditor.commit();
     }
 
@@ -217,6 +257,15 @@ public class PreferenceManager {
     
     public String getMicrophoneSensitivity() {
     	return appSharedPrefs.getString(MICROPHONE_SENSITIVITY, MEDIUM);
+    }
+
+    public void activateEmail(boolean active) {
+        prefsEditor.putBoolean(EMAIL_ACTIVE, active);
+        prefsEditor.commit();
+    }
+
+    public boolean getEmailActivation() {
+        return appSharedPrefs.getBoolean(EMAIL_ACTIVE, false);
     }
     
     public void activateSms(boolean active) {

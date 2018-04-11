@@ -25,7 +25,9 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.SwitchPreferenceCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.takisoft.fix.support.v7.preference.PreferenceFragmentCompat;
@@ -113,6 +115,28 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
             findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(signalNum);
         } else {
             findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(R.string.register_signal_desc);
+        }
+
+        Log.d("email",preferences.getEmailUsername());
+        if (checkValidString(preferences.getEmailUsername())) {
+            String email = preferences.getEmailUsername().trim();
+            findPreference(PreferenceManager.EMAIL_USERNAME).setSummary(email);
+        } else {
+            findPreference(PreferenceManager.EMAIL_USERNAME).setSummary("请输入发送邮箱");
+        }
+
+        if (checkValidString(preferences.getREmailUsername())) {
+            String receive_email = preferences.getREmailUsername().trim();
+            findPreference(PreferenceManager.REMAIL_USERNAME).setSummary(receive_email);
+        } else {
+            findPreference(PreferenceManager.REMAIL_USERNAME).setSummary("请输入接收邮箱");
+        }
+//        Log.d("email password",preferences.getEmailPassword());
+        if (checkValidString(preferences.getEmailPassword())) {
+            String email_password = preferences.getEmailPassword().trim();
+            findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary(email_password);
+        } else {
+            findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary("请输入POP授权码hh");
         }
 
         if (preferences.getNotificationTimeMs()>0)
@@ -254,6 +278,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        Log.d("key",key);
         switch (key) {
             case PreferenceManager.CAMERA:
                 switch (Integer.parseInt(((ListPreference) findPreference(PreferenceManager.CAMERA)).getValue())) {
@@ -285,8 +310,37 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
                     app.stopServer();
                 }
                 break;
+            case PreferenceManager.REMAIL_USERNAME:
+                Log.d("at","reamil_username");
+                String receive_addr = ((EditTextPreference) findPreference(PreferenceManager.REMAIL_USERNAME)).getText();
+                Log.d("receive_addr",receive_addr);
+
+                if (checkValidString(receive_addr)) {
+                    preferences.setREmailUsername(receive_addr);
+                    findPreference(PreferenceManager.REMAIL_USERNAME).setSummary(receive_addr);
+                }
+                break;
+            case PreferenceManager.EMAIL_USERNAME:
+                String send_addr = ((EditTextPreference) findPreference(PreferenceManager.EMAIL_USERNAME)).getText();
+                Log.d("send_addr",send_addr);
+
+                if (checkValidString(send_addr)) {
+                    preferences.setEmailUsername(send_addr);
+                    findPreference(PreferenceManager.EMAIL_USERNAME).setSummary(send_addr);
+                }
+                break;
+            case PreferenceManager.EMAIL_PASSWORD:
+                String email_password = ((EditTextPreference) findPreference(PreferenceManager.EMAIL_PASSWORD)).getText();
+                Log.d("email_password",email_password);
+
+                if (checkValidString(email_password)) {
+                    preferences.setEmailPassword(email_password);
+                    findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary(email_password);
+                }
+                break;
             case PreferenceManager.REGISTER_SIGNAL:
                 String signalNum = ((EditTextPreference) findPreference(PreferenceManager.REGISTER_SIGNAL)).getText();
+                Log.d("sinnalNum",signalNum);
 
                 if (checkValidString(signalNum)) {
                     signalNum = "+" + signalNum.trim().replaceAll("[^0-9]", "");
