@@ -54,10 +54,10 @@ public class PreferenceManager {
     private static final String MICROPHONE_SENSITIVITY="microphone_sensitivity";
     public static final String CONFIG_SOUND = "config_sound";
     public static final String CONFIG_TIME_DELAY = "config_delay_time";
-    public static final String SMS_ACTIVE = "sms_active";
-    public static final String SMS_NUMBER = "sms_number";
-    public static final String REGISTER_SIGNAL = "register_signal";
-    public static final String VERIFY_SIGNAL = "verify_signal";
+//    public static final String SMS_ACTIVE = "sms_active";
+//    public static final String SMS_NUMBER = "sms_number";
+//    public static final String REGISTER_SIGNAL = "register_signal";
+//    public static final String VERIFY_SIGNAL = "verify_signal";
     public static final String SEND_SMS = "send_sms";
 
     public static final String EMAIL_ACTIVE = "email_active";
@@ -86,6 +86,8 @@ public class PreferenceManager {
     private static final String FIRST_LAUNCH = "first_launch";
 
     public static final String NOTIFICATION_TIME = "notification_time";
+
+    public static final String NOTIFICATION_TIME_E = "notification_time_e";
 
     public static final String DISABLE_BATTERY_OPT = "config_battery_optimizations";
 
@@ -265,27 +267,27 @@ public class PreferenceManager {
     }
 
     public boolean getEmailActivation() {
-        return appSharedPrefs.getBoolean(EMAIL_ACTIVE, false);
+        return appSharedPrefs.getBoolean(EMAIL_ACTIVE, true);
     }
     
-    public void activateSms(boolean active) {
-    	prefsEditor.putBoolean(SMS_ACTIVE, active);
-    	prefsEditor.commit();
-    }
+//    public void activateSms(boolean active) {
+//    	prefsEditor.putBoolean(SMS_ACTIVE, active);
+//    	prefsEditor.commit();
+//    }
     
-    public boolean getSmsActivation() {
-    	return appSharedPrefs.getBoolean(SMS_ACTIVE, false);
-    }
+//    public boolean getSmsActivation() {
+//    	return appSharedPrefs.getBoolean(SMS_ACTIVE, false);
+//    }
     
-    public void setSmsNumber(String number) {
-
-    	prefsEditor.putString(SMS_NUMBER, number);
-    	prefsEditor.commit();
-    }
+//    public void setSmsNumber(String number) {
+//
+//    	prefsEditor.putString(SMS_NUMBER, number);
+//    	prefsEditor.commit();
+//    }
     
-    public String getSmsNumber() {
-    	return appSharedPrefs.getString(SMS_NUMBER, "");
-    }
+//    public String getSmsNumber() {
+//    	return appSharedPrefs.getString(SMS_NUMBER, "");
+//    }
 
     public int getTimerDelay ()
     {

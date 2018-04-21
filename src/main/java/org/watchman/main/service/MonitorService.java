@@ -26,6 +26,7 @@ import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.watchman.main.WatchMan;
 import org.watchman.main.MonitorActivity;
@@ -307,38 +308,70 @@ public class MonitorService extends Service {
             StringBuilder alertMessage = new StringBuilder();
             alertMessage.append(getString(R.string.intrusion_detected, eventTrigger.getStringType(this)));
 
-            if (mPrefs.getSignalUsername() != null) {
-                //since this is a secure channel, we can add the Onion address
-                if (mPrefs.getRemoteAccessActive() && (!TextUtils.isEmpty(mPrefs.getRemoteAccessOnion()))) {
-                    alertMessage.append(" http://").append(mPrefs.getRemoteAccessOnion())
-                            .append(':').append(WebServer.LOCAL_PORT);
-                }
+//            if (mPrefs.getSignalUsername() != null) {
+//                //since this is a secure channel, we can add the Onion address
+//                if (mPrefs.getRemoteAccessActive() && (!TextUtils.isEmpty(mPrefs.getRemoteAccessOnion()))) {
+//                    alertMessage.append(" http://").append(mPrefs.getRemoteAccessOnion())
+//                            .append(':').append(WebServer.LOCAL_PORT);
+//                }
+//
+//                SignalSender sender = SignalSender.getInstance(this, mPrefs.getSignalUsername());
+//                ArrayList<String> recips = new ArrayList<>();
+//                StringTokenizer st = new StringTokenizer(mPrefs.getSmsNumber(), ",");
+//                while (st.hasMoreTokens())
+//                    recips.add(st.nextToken());
+//
+//                String attachment = null;
+//                if (eventTrigger.getType() == EventTrigger.CAMERA) {
+//                    attachment = eventTrigger.getPath();
+//                } else if (eventTrigger.getType() == EventTrigger.MICROPHONE) {
+//                    attachment = eventTrigger.getPath();
+//                }
+//                else if (eventTrigger.getType() == EventTrigger.CAMERA_VIDEO) {
+//                    attachment = eventTrigger.getPath();
+//                }
+//
+//                sender.sendMessage(recips, alertMessage.toString(), attachment);
+//            } else if (mPrefs.getSmsActivation()) {
+//                SmsManager manager = SmsManager.getDefault();
+//
+//                StringTokenizer st = new StringTokenizer(mPrefs.getSmsNumber(), ",");
+//                while (st.hasMoreTokens())
+//                    manager.sendTextMessage(st.nextToken(), null, alertMessage.toString(), null, null);
+//
+//            }
 
-                SignalSender sender = SignalSender.getInstance(this, mPrefs.getSignalUsername());
-                ArrayList<String> recips = new ArrayList<>();
-                StringTokenizer st = new StringTokenizer(mPrefs.getSmsNumber(), ",");
-                while (st.hasMoreTokens())
-                    recips.add(st.nextToken());
+            Log.d("emailActiovaition",mPrefs.getEmailActivation()+"");
 
-                String attachment = null;
-                if (eventTrigger.getType() == EventTrigger.CAMERA) {
-                    attachment = eventTrigger.getPath();
-                } else if (eventTrigger.getType() == EventTrigger.MICROPHONE) {
-                    attachment = eventTrigger.getPath();
-                }
-                else if (eventTrigger.getType() == EventTrigger.CAMERA_VIDEO) {
-                    attachment = eventTrigger.getPath();
-                }
+            if (mPrefs.getEmailActivation()){
 
-                sender.sendMessage(recips, alertMessage.toString(), attachment);
-            } else if (mPrefs.getSmsActivation()) {
-                SmsManager manager = SmsManager.getDefault();
+                new Thread(new Runnable() {
 
-                StringTokenizer st = new StringTokenizer(mPrefs.getSmsNumber(), ",");
-                while (st.hasMoreTokens())
-                    manager.sendTextMessage(st.nextToken(), null, alertMessage.toString(), null, null);
+                    @Override
+                    public void run() {
+                        Log.d("test","hahahha");
+                        Log.d("test",mPrefs.getEmailUsername());
+                        Log.d("test",mPrefs.getEmailUsername().trim().equals("myautosender@163.com")+"");
+                        Log.d("test",mPrefs.getREmailUsername());
+                        Log.d("test",mPrefs.getEmailPassword());
+                        Log.d("test",mPrefs.getEmailPassword().trim().equals("laozi9yongmw")+"");
 
+                        EmailSender sender = new EmailSender(mPrefs.getEmailUsername().trim(),mPrefs.getEmailPassword().trim());
+                        try{
+                            sender.sendMailwithAttachment("预警通知",alertMessage.toString(),mPrefs.getEmailUsername(),mPrefs.getREmailUsername(),eventTrigger.getPath().toString());
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                }).start();
             }
+
+            Log.d("begin",eventTrigger.getPath().toString());
+
+            Log.d("begin","notication");
+            Log.d("begin",alertMessage.toString());
+
         }
 
     }

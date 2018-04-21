@@ -6,6 +6,7 @@ package org.watchman.main.service;
 
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -44,11 +45,10 @@ public class EmailFetch {
     }
 
     public synchronized Map fetchEmail() {
-
+        Map email_fetch = new HashMap();
         Store store = null;
         Folder folder = null;
         Message message = null;
-        Map email_fetch = new HashMap();
 
         try {
             store = session.getStore(protocol);
@@ -63,22 +63,11 @@ public class EmailFetch {
             String from = message.getFrom()[0].toString();
             String subject = message.getSubject();
             Date date = message.getSentDate();
+            Log.d("from",from);
+            Log.d("subject",subject);
             email_fetch.put("from",from);
             email_fetch.put("subject",subject);
             email_fetch.put("date",date);
-
-//            try{
-//                String content;
-//                content = message.getContent().toString();
-//                Log.d("content",content);
-//                message.writeTo(System.out);
-//            }catch (Exception e){
-//                Log.d("hahah","error");
-//            }
-
-//            Log.d("From: ",from.toString());
-//            Log.d("Subject: " ,subject.toString());
-//            Log.d("Date: ",date.toString());
 
 
         } catch (NoSuchProviderException e) {
@@ -98,7 +87,11 @@ public class EmailFetch {
             }
         }
 
-//        Log.d("info","接收完毕！");
         return email_fetch;
+    }
+
+    private void execute (Runnable runnable)
+    {
+        new Thread (runnable).start();
     }
 }

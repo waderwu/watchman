@@ -68,8 +68,8 @@ public class CustomSlideNotify extends Fragment {
             }
         });
         PreferenceManager pm = new PreferenceManager(getActivity());
-        if (!TextUtils.isEmpty(pm.getSmsNumber()))
-            mEditNumber.setText(pm.getSmsNumber());
+        if (!TextUtils.isEmpty(pm.getREmailUsername()))
+            mEditNumber.setText(pm.getREmailUsername());
 
         Button button = view.findViewById(R.id.btnSaveNumber);
         button.setOnClickListener(mListener);

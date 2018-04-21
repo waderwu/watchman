@@ -18,6 +18,7 @@
 package org.watchman.main;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.graphics.Color;
@@ -41,11 +42,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
 import org.watchman.main.model.Event;
+import org.watchman.main.service.EmailFetch;
 import org.watchman.main.service.SignalSender;
 import org.watchman.main.service.EmailSender;
 import org.watchman.main.ui.EventActivity;
@@ -56,7 +59,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
+
+import org.watchman.main.service.EmailSender;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -66,6 +72,8 @@ public class ListActivity extends AppCompatActivity {
     private EventAdapter adapter;
     private List<Event> events = new ArrayList<>();
     private PreferenceManager preferences;
+    private Context mcontext = this;
+    private String res = null;
 
     private int modifyPos = -1;
 
@@ -320,6 +328,9 @@ public class ListActivity extends AppCompatActivity {
             case R.id.action_test_notification:
                 testNotifications();
                 break;
+            case R.id.action_test_fetchemail:
+                testFetceEmail();
+                break;
         }
         return true;
     }
@@ -372,23 +383,86 @@ public class ListActivity extends AppCompatActivity {
                 .start(this);
     }
 
+    private void testFetceEmail(){
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Log.d("test","hahahha");
+                Log.d("test",preferences.getEmailUsername());
+                Log.d("test",preferences.getEmailUsername().trim().equals("myautosender@163.com")+"");
+                Log.d("test",preferences.getREmailUsername());
+                Log.d("test",preferences.getEmailPassword());
+                Log.d("test",preferences.getEmailPassword().trim().equals("laozi9yongmw")+"");
+
+                EmailFetch emailFetch = new EmailFetch(preferences.getEmailUsername().trim(),preferences.getEmailPassword().trim());
+
+
+                try{
+                    Map email_fetch = emailFetch.fetchEmail();
+                    Log.d("from",email_fetch.get("from").toString());
+                    res = email_fetch.get("subject").toString();
+                    Log.d("subject",res);
+                    show(res);
+                    Log.d("date",email_fetch.get("date").toString());
+                } catch(Exception e) {
+                    Log.e("error",e.getMessage(),e);
+                }
+            }
+
+        });
+
+        thread.start();
+        try{
+            thread.join();
+        }catch (Exception e){
+            Log.e("error",e.getMessage(),e);
+        }
+
+        Toast.makeText(mcontext,res,Toast.LENGTH_SHORT).show();
+    }
+
+    private void show(String sub){
+        Toast.makeText(mcontext,sub,Toast.LENGTH_SHORT).show();
+    }
+
     private void testNotifications ()
     {
 
-        if (!TextUtils.isEmpty(preferences.getSignalUsername())) {
-            SignalSender sender = SignalSender.getInstance(this, preferences.getSignalUsername().trim());
-            ArrayList<String> recip = new ArrayList<>();
-            recip.add(preferences.getSmsNumber());
-            sender.sendMessage(recip, getString(R.string.signal_test_message), null);
-        }
-        else if (!TextUtils.isEmpty(preferences.getSmsNumber())) {
+        new Thread(new Runnable() {
 
-            SmsManager manager = SmsManager.getDefault();
+            @Override
+            public void run() {
+                Log.d("test","hahahha");
+                Log.d("test",preferences.getEmailUsername());
+                Log.d("test",preferences.getEmailUsername().trim().equals("myautosender@163.com")+"");
+                Log.d("test",preferences.getREmailUsername());
+                Log.d("test",preferences.getEmailPassword());
+                Log.d("test",preferences.getEmailPassword().trim().equals("laozi9yongmw")+"");
 
-            StringTokenizer st = new StringTokenizer(preferences.getSmsNumber(),",");
-            while (st.hasMoreTokens())
-                manager.sendTextMessage(st.nextToken(), null, getString(R.string.signal_test_message), null, null);
+                EmailSender sender = new EmailSender(preferences.getEmailUsername().trim(),preferences.getEmailPassword().trim());
+                try{
+                    sender.sendMail("测试通知","邮件通知一切正常",preferences.getEmailUsername(),preferences.getREmailUsername());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
 
-        }
+        }).start();
+//        if (!TextUtils.isEmpty(preferences.getSignalUsername())) {
+//            SignalSender sender = SignalSender.getInstance(this, preferences.getSignalUsername().trim());
+//            ArrayList<String> recip = new ArrayList<>();
+//            recip.add(preferences.getSmsNumber());
+//            sender.sendMessage(recip, getString(R.string.signal_test_message), null);
+//        }
+//        else if (!TextUtils.isEmpty(preferences.getSmsNumber())) {
+//
+//            SmsManager manager = SmsManager.getDefault();
+//
+//            StringTokenizer st = new StringTokenizer(preferences.getSmsNumber(),",");
+//            while (st.hasMoreTokens())
+//                manager.sendTextMessage(st.nextToken(), null, getString(R.string.signal_test_message), null, null);
+//
+//        }
     }
 }

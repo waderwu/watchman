@@ -4,6 +4,7 @@ package org.watchman.main.service;
  * Created by waderwu on 18-4-8.
  */
 
+import android.app.Activity;
 import android.content.Context;
 
 import net.sourceforge.argparse4j.inf.Namespace;
@@ -15,13 +16,18 @@ import java.util.HashMap;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeUtility;
 
+import org.watchman.main.PreferenceManager;
 import org.watchman.main.service.JSSEProvider;
 
 
@@ -84,6 +90,31 @@ public class EmailSender extends javax.mail.Authenticator {
             message.setSender(new InternetAddress(sender));
             message.setSubject(subject);
             message.setDataHandler(handler);
+            if (recipients.indexOf(',') > 0)
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
+            else
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
+            Transport.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public synchronized void sendMailwithAttachment(String subject, String body, String sender, String recipients,String attachment) throws Exception {
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setSender(new InternetAddress(sender));
+            message.setSubject(subject);
+            MimeBodyPart body0 = new MimeBodyPart();
+            body0.setContent(body,"text/html;charset=utf-8");
+            MimeBodyPart body1 = new MimeBodyPart();
+            body1.setDataHandler( new DataHandler( new FileDataSource(attachment)));
+            body1.setFileName( MimeUtility.encodeText(attachment));
+            MimeMultipart mm = new MimeMultipart();
+            mm.addBodyPart(body0);
+            mm.addBodyPart(body1);
+            message.setContent(mm);
             if (recipients.indexOf(',') > 0)
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
             else

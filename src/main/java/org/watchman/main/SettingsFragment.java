@@ -81,16 +81,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
         }
 
-        if (preferences.getSmsActivation()) {
-            ((SwitchPreferenceCompat) findPreference(PreferenceManager.SMS_ACTIVE)).setChecked(true);
-        }
-
-        if (checkValidString(preferences.getSmsNumber())) {
-            ((EditTextPreference) findPreference(PreferenceManager.SMS_NUMBER)).setText(preferences.getSmsNumber().trim());
-            findPreference(PreferenceManager.SMS_NUMBER).setSummary(preferences.getSmsNumber().trim());
-        } else {
-            findPreference(PreferenceManager.SMS_NUMBER).setSummary(R.string.sms_dialog_summary);
-        }
+//        if (preferences.getSmsActivation()) {
+//            ((SwitchPreferenceCompat) findPreference(PreferenceManager.SMS_ACTIVE)).setChecked(true);
+//        }
+//
+//        if (checkValidString(preferences.getSmsNumber())) {
+//            ((EditTextPreference) findPreference(PreferenceManager.SMS_NUMBER)).setText(preferences.getSmsNumber().trim());
+//            findPreference(PreferenceManager.SMS_NUMBER).setSummary(preferences.getSmsNumber().trim());
+//        } else {
+//            findPreference(PreferenceManager.SMS_NUMBER).setSummary(R.string.sms_dialog_summary);
+//        }
 
         if (preferences.getRemoteAccessActive()) {
             ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).setChecked(true);
@@ -110,14 +110,14 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
             findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.remote_access_credential_hint);
         }
 
-        if (checkValidString(preferences.getSignalUsername())) {
-            String signalNum = "+" + preferences.getSignalUsername().trim().replaceAll("[^0-9]", "");
-            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(signalNum);
-        } else {
-            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(R.string.register_signal_desc);
-        }
+//        if (checkValidString(preferences.getSignalUsername())) {
+//            String signalNum = "+" + preferences.getSignalUsername().trim().replaceAll("[^0-9]", "");
+//            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(signalNum);
+//        } else {
+//            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(R.string.register_signal_desc);
+//        }
 
-        Log.d("email",preferences.getEmailUsername());
+        Log.d("email",preferences.getEmailUsername()+"---add");
         if (checkValidString(preferences.getEmailUsername())) {
             String email = preferences.getEmailUsername().trim();
             findPreference(PreferenceManager.EMAIL_USERNAME).setSummary(email);
@@ -180,8 +180,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
             return true;
         });
 
-        checkSignalUsername();
-        ((EditTextPreference) findPreference(PreferenceManager.VERIFY_SIGNAL)).setText("");
+//        checkSignalUsername();
+//        ((EditTextPreference) findPreference(PreferenceManager.VERIFY_SIGNAL)).setText("");
         askForPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 1);
 
     }
@@ -206,7 +206,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
         preferences.activateMicrophone(true);
 
-        setPhoneNumber();
+//        setPhoneNumber();
 
         boolean videoMonitoringActive = ((SwitchPreference) findPreference(mActivity.getResources().getString(R.string.video_active_preference_key))).isChecked();
 
@@ -297,10 +297,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
                 }
                 break;
-            case PreferenceManager.SMS_ACTIVE:
-
-                setPhoneNumber();
-                break;
+//            case PreferenceManager.SMS_ACTIVE:
+//
+//                setPhoneNumber();
+//                break;
             case PreferenceManager.REMOTE_ACCESS_ACTIVE:
                 boolean remoteAccessActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).isChecked();
                 if (remoteAccessActive) {
@@ -338,36 +338,36 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
                     findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary(email_password);
                 }
                 break;
-            case PreferenceManager.REGISTER_SIGNAL:
-                String signalNum = ((EditTextPreference) findPreference(PreferenceManager.REGISTER_SIGNAL)).getText();
-                Log.d("sinnalNum",signalNum);
-
-                if (checkValidString(signalNum)) {
-                    signalNum = "+" + signalNum.trim().replaceAll("[^0-9]", "");
-
-                    preferences.setSignalUsername(signalNum);
-                    findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(signalNum);
-
-                    resetSignal(preferences.getSignalUsername());
-                    activateSignal(preferences.getSignalUsername(), null);
-                } else {
-                    preferences.setSignalUsername("");
-                    findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(R.string.register_signal_desc);
-                }
-                break;
-            case PreferenceManager.VERIFY_SIGNAL: {
-                String text = ((EditTextPreference) findPreference(PreferenceManager.VERIFY_SIGNAL)).getText();
-                activateSignal(preferences.getSignalUsername(), text);
-                break;
-            }
-            case PreferenceManager.SMS_NUMBER:
-                boolean smsActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.SMS_ACTIVE)).isChecked();
-                if (smsActive && TextUtils.isEmpty(preferences.getSignalUsername())) {
-                    askForPermission(Manifest.permission.SEND_SMS, 6);
-                    askForPermission(Manifest.permission.READ_PHONE_STATE, 6);
-                }
-                setPhoneNumber();
-                break;
+//            case PreferenceManager.REGISTER_SIGNAL:
+//                String signalNum = ((EditTextPreference) findPreference(PreferenceManager.REGISTER_SIGNAL)).getText();
+//                Log.d("sinnalNum",signalNum);
+//
+//                if (checkValidString(signalNum)) {
+//                    signalNum = "+" + signalNum.trim().replaceAll("[^0-9]", "");
+//
+//                    preferences.setSignalUsername(signalNum);
+//                    findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(signalNum);
+//
+//                    resetSignal(preferences.getSignalUsername());
+//                    activateSignal(preferences.getSignalUsername(), null);
+//                } else {
+//                    preferences.setSignalUsername("");
+//                    findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(R.string.register_signal_desc);
+//                }
+//                break;
+//            case PreferenceManager.VERIFY_SIGNAL: {
+//                String text = ((EditTextPreference) findPreference(PreferenceManager.VERIFY_SIGNAL)).getText();
+//                activateSignal(preferences.getSignalUsername(), text);
+//                break;
+//            }
+//            case PreferenceManager.SMS_NUMBER:
+//                boolean smsActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.SMS_ACTIVE)).isChecked();
+//                if (smsActive && TextUtils.isEmpty(preferences.getSignalUsername())) {
+//                    askForPermission(Manifest.permission.SEND_SMS, 6);
+//                    askForPermission(Manifest.permission.READ_PHONE_STATE, 6);
+//                }
+//                setPhoneNumber();
+//                break;
             case PreferenceManager.NOTIFICATION_TIME:
                 try
                 {
@@ -408,23 +408,23 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         }
     }
 
-    private void setPhoneNumber() {
-        boolean smsActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.SMS_ACTIVE)).isChecked();
-        String phoneNumber = ((EditTextPreference) findPreference(PreferenceManager.SMS_NUMBER)).getText();
-        if (smsActive && checkValidString(phoneNumber)) {
-            preferences.activateSms(true);
-        } else {
-            preferences.activateSms(false);
-        }
-
-        if (checkValidString(phoneNumber)) {
-            preferences.setSmsNumber(phoneNumber.trim());
-            findPreference(PreferenceManager.SMS_NUMBER).setSummary(phoneNumber.trim());
-        } else {
-            preferences.setSmsNumber("");
-            findPreference(PreferenceManager.SMS_NUMBER).setSummary(R.string.sms_dialog_message);
-        }
-    }
+//    private void setPhoneNumber() {
+//        boolean smsActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.SMS_ACTIVE)).isChecked();
+//        String phoneNumber = ((EditTextPreference) findPreference(PreferenceManager.SMS_NUMBER)).getText();
+//        if (smsActive && checkValidString(phoneNumber)) {
+//            preferences.activateSms(true);
+//        } else {
+//            preferences.activateSms(false);
+//        }
+//
+//        if (checkValidString(phoneNumber)) {
+//            preferences.setSmsNumber(phoneNumber.trim());
+//            findPreference(PreferenceManager.SMS_NUMBER).setSummary(phoneNumber.trim());
+//        } else {
+//            preferences.setSmsNumber("");
+//            findPreference(PreferenceManager.SMS_NUMBER).setSummary(R.string.sms_dialog_message);
+//        }
+//    }
 
     private void showTimeDelayDialog(String configVideoLength) {
         int totalSecs;
@@ -455,14 +455,14 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         return a != null && !a.trim().isEmpty() && b != null && !b.trim().isEmpty();
     }
 
-    private void checkSignalUsername() {
-        if (checkValidString(preferences.getSignalUsername())) {
-            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(preferences.getSignalUsername().trim());
-            ((EditTextPreference) findPreference(PreferenceManager.REGISTER_SIGNAL)).setText(preferences.getSignalUsername().trim());
-        } else {
-            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(R.string.signal_dialog_summary);
-        }
-    }
+//    private void checkSignalUsername() {
+//        if (checkValidString(preferences.getSignalUsername())) {
+//            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(preferences.getSignalUsername().trim());
+//            ((EditTextPreference) findPreference(PreferenceManager.REGISTER_SIGNAL)).setText(preferences.getSignalUsername().trim());
+//        } else {
+//            findPreference(PreferenceManager.REGISTER_SIGNAL).setSummary(R.string.signal_dialog_summary);
+//        }
+//    }
 
     private void activateSignal(String username, String verifyCode) {
         SignalSender sender = SignalSender.getInstance(mActivity, username);
