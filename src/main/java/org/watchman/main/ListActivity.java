@@ -164,9 +164,9 @@ public class ListActivity extends AppCompatActivity {
         try {
             events = Event.listAll(Event.class, "id DESC");
 
-            if (events.size() > 0) {
-                findViewById(R.id.empty_view).setVisibility(View.GONE);
-            }
+//            if (events.size() > 0) {
+//                findViewById(R.id.empty_view).setVisibility(View.GONE);
+//            }
 
             adapter = new EventAdapter(ListActivity.this, events);
             recyclerView.setVisibility(View.VISIBLE);
@@ -281,13 +281,13 @@ public class ListActivity extends AppCompatActivity {
             initialCount = newCount;
             **/
 
-            recyclerView.setVisibility(View.VISIBLE);
-            findViewById(R.id.empty_view).setVisibility(View.GONE);
+
+//            findViewById(R.id.empty_view).setVisibility(View.GONE);
         }
         else if (newCount == 0)
         {
             recyclerView.setVisibility(View.GONE);
-            findViewById(R.id.empty_view).setVisibility(View.VISIBLE);
+//            findViewById(R.id.empty_view).setVisibility(View.VISIBLE);
         }
 
         if (modifyPos != -1) {

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import org.watchman.main.PreferenceManager;
 import org.watchman.main.R;
+import org.watchman.main.SettingsActivity;
 
 /**
  * Created by n8fr8 on 5/8/17.
@@ -45,7 +46,7 @@ public class PPAppIntro extends AppIntro {
 
         CustomSlideBigText cs2 = CustomSlideBigText.newInstance(R.layout.custom_slide_big_text);
         cs2.setTitle(getString(R.string.intro3_desc));
-        cs2.showButton(getString(R.string.action_configure), new View.OnClickListener() {
+        cs2.showButton("设置阈值", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PPAppIntro.this,AccelConfigureActivity.class));
@@ -56,21 +57,25 @@ public class PPAppIntro extends AppIntro {
         });
         addSlide(cs2);
 
-        CustomSlideBigText cs3 = CustomSlideBigText.newInstance(R.layout.custom_slide_big_text);
-        cs3.setTitle(getString(R.string.intro4_desc));
-        addSlide(cs3);
+//        CustomSlideBigText cs3 = CustomSlideBigText.newInstance(R.layout.custom_slide_big_text);
+//        cs3.setTitle(getString(R.string.intro4_desc));
+//        addSlide(cs3);
 
-        final CustomSlideNotify cs4 = CustomSlideNotify.newInstance(R.layout.custom_slide_notify);
-        cs4.setSaveListener(new View.OnClickListener() {
+        final CustomSlideBigText cs4 =CustomSlideBigText.newInstance(R.layout.custom_slide_big_text);
+        cs4.setTitle("通过邮箱获取入侵事件通知，本地保存日志供在场访问，同时上传到ftp供远程访问");
+        cs4.showButton("设置账号", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferenceManager pm = new PreferenceManager(PPAppIntro.this);
-                pm.activateEmail(true);
-//                pm.se(cs4.getPhoneNumber());
-                Toast.makeText(PPAppIntro.this, R.string.phone_saved,Toast.LENGTH_SHORT).show();
-                getPager().setCurrentItem(getPager().getCurrentItem()+1);
+                startActivity(new Intent(PPAppIntro.this,SettingsActivity.class));
             }
         });
+//        cs4.setSaveListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(PPAppIntro.this, SettingsActivity.class));
+//                getPager().setCurrentItem(getPager().getCurrentItem()+1);
+//            }
+//        });
         addSlide(cs4);
 
         addSlide(AppIntroFragment.newInstance(getString(R.string.intro5_title), getString(R.string.intro5_desc),

@@ -11,42 +11,42 @@
         android:id="@+id/custom_slide_big_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/know_immediately_when_watchman_detects_something"
+        android:text="当watchman检测到异常时会立即通过邮件通知你，并通过ftp上传日志"
         android:textColor="@color/colorPrimaryLight"
         android:gravity="center"
         android:layout_margin="10dp"
         android:textStyle="bold"
         android:textSize="28sp"/>
 
-    <android.support.v7.widget.AppCompatEditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/White"
-        android:backgroundTint="@color/colorPrimaryLight"
-        app:backgroundTint="@color/colorPrimaryLight"
-        android:hint="@string/sms_hint"
-        android:gravity="center"
-        android:inputType="phone"
-        android:imeOptions="actionDone"
-        android:id="@+id/editNumber"
-        />
+    <!--<android.support.v7.widget.AppCompatEditText-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textColor="@color/White"-->
+        <!--android:backgroundTint="@color/colorPrimaryLight"-->
+        <!--app:backgroundTint="@color/colorPrimaryLight"-->
+        <!--android:hint="myautosender@163.com"-->
+        <!--android:gravity="center"-->
+        <!--android:inputType="textEmailAddress"-->
+        <!--android:imeOptions="actionDone"-->
+        <!--android:id="@+id/editNumber"-->
+        <!--/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/you_will_receive_a_text_when_the_app_hears_or_sees_something"
-        android:textColor="@color/colorPrimaryLight"
-        android:gravity="center"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="当watchman检测到异常时你将收到邮件预警"-->
+        <!--android:textColor="@color/colorPrimaryLight"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_marginLeft="40dp"-->
+        <!--android:layout_marginRight="40dp"-->
 
-        android:textStyle="bold"
-        android:textSize="16sp"/>
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="16sp"/>-->
 
     <Button
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:text="@string/save_number"
+        android:text="保存邮箱"
         android:layout_margin="10dp"
         android:id="@+id/btnSaveNumber"
         android:background="@drawable/round_drawable"

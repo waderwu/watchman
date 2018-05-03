@@ -58,21 +58,21 @@ public class CustomSlideNotify extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(layoutResId, container, false);
 
-        mEditNumber = view.findViewById(R.id.editNumber);
-        mEditNumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                askForPermission(Manifest.permission.SEND_SMS,6);
-                askForPermission(Manifest.permission.READ_PHONE_STATE,6);
-
-            }
-        });
-        PreferenceManager pm = new PreferenceManager(getActivity());
-        if (!TextUtils.isEmpty(pm.getREmailUsername()))
-            mEditNumber.setText(pm.getREmailUsername());
-
-        Button button = view.findViewById(R.id.btnSaveNumber);
-        button.setOnClickListener(mListener);
+//        mEditNumber = view.findViewById(R.id.editNumber);
+//        mEditNumber.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                askForPermission(Manifest.permission.SEND_SMS,6);
+//                askForPermission(Manifest.permission.READ_PHONE_STATE,6);
+//
+//            }
+//        });
+//        PreferenceManager pm = new PreferenceManager(getActivity());
+//        if (!TextUtils.isEmpty(pm.getREmailUsername()))
+//            mEditNumber.setText(pm.getREmailUsername());
+//
+//        Button button = view.findViewById(R.id.btnSaveNumber);
+//        button.setOnClickListener(mListener);
         return view;
 
     }
