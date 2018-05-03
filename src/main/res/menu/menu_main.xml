@@ -19,6 +19,14 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_test_ftp_upload"
+        android:orderInCategory="100"
+        android:title="test ftp upload"
+        app:showAsAction="never" />
+
+
+
+    <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         android:title="@string/menu_about"

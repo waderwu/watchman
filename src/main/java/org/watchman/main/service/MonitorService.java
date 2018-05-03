@@ -18,6 +18,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -40,6 +41,9 @@ import org.watchman.main.sensors.BarometerMonitor;
 import org.watchman.main.sensors.BumpMonitor;
 import org.watchman.main.sensors.MicrophoneMonitor;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
@@ -86,6 +90,8 @@ public class MonitorService extends Service {
      * Last sent notification time
      */
     private Date mLastNotification;
+
+    private long uploadTimestamp;
 
         /**
 	 * Handler for incoming messages
@@ -142,6 +148,9 @@ public class MonitorService extends Service {
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
                 "MyWakelockTag");
         wakeLock.acquire();
+
+        uploadTimestamp = System.currentTimeMillis();
+        Log.d("stamp",uploadTimestamp+"");
     }
 
     public static MonitorService getInstance ()
@@ -269,6 +278,7 @@ public class MonitorService extends Service {
 
         Date now = new Date();
         boolean doNotification = false;
+        boolean doUpload = false;
 
         if (mLastEvent == null) {
             mLastEvent = new Event();
@@ -297,6 +307,41 @@ public class MonitorService extends Service {
 
         //we don't need to resave the event, only the trigger
         eventTrigger.save();
+
+        if (System.currentTimeMillis() > uploadTimestamp+mPrefs.getFtpUploadTimeMs())
+        {
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                        Ftp ftp = new Ftp(mPrefs.getFtpUrl().trim(),21,mPrefs.getFtpAccount().trim(),mPrefs.getFtpPassword().trim());
+                        File dir = Environment.getExternalStorageDirectory();
+                        Log.d("test", "run: "+dir);
+                        File test = new File(dir,"/phoneypot/ftp_upload.txt");
+                        if (!test.exists()){
+                            PrintStream ps = new PrintStream(new FileOutputStream(test));
+                            ps.println("test for ftp upload");
+                        }
+                        String file_dected = eventTrigger.getPath().toString().split("/")[5];
+                        Log.d("ftp",file_dected);
+                        Boolean status = ftp.upload_file(eventTrigger.getPath(),"upload/"+file_dected,"hahhahah");
+
+                        Log.d("ftp upload","success");
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+            thread.start();
+
+            uploadTimestamp = System.currentTimeMillis();
+        }
+
+
 
         if (doNotification) {
 
@@ -342,6 +387,8 @@ public class MonitorService extends Service {
 //            }
 
             Log.d("emailActiovaition",mPrefs.getEmailActivation()+"");
+
+
 
             if (mPrefs.getEmailActivation()){
 

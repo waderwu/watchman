@@ -136,12 +136,39 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
             String email_password = preferences.getEmailPassword().trim();
             findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary(email_password);
         } else {
-            findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary("请输入POP授权码hh");
+            findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary("请输入POP授权码");
         }
 
         if (preferences.getNotificationTimeMs()>0)
         {
             findPreference(PreferenceManager.NOTIFICATION_TIME).setSummary(preferences.getNotificationTimeMs()/60000 + " " + getString(R.string.minutes));
+        }
+
+
+        if (checkValidString(preferences.getFtpUrl())) {
+            String url= preferences.getFtpUrl().trim();
+            findPreference(PreferenceManager.FTP_URL).setSummary(url);
+        } else {
+            findPreference(PreferenceManager.FTP_URL).setSummary("请输入ftp服务器地址");
+        }
+
+        if (checkValidString(preferences.getFtpAccount())) {
+            String account = preferences.getFtpAccount().trim();
+            findPreference(PreferenceManager.FTP_ACCOUNT).setSummary(account);
+        } else {
+            findPreference(PreferenceManager.FTP_ACCOUNT).setSummary("请输入ftp账号");
+        }
+
+        if (checkValidString(preferences.getFtpPassword())) {
+            String password = preferences.getFtpPassword().trim();
+            findPreference(PreferenceManager.FTP_PASSWORD).setSummary(password);
+        } else {
+            findPreference(PreferenceManager.FTP_PASSWORD).setSummary("请输入ftp密码");
+        }
+
+        if (preferences.getFtpUploadTimeMs()>0)
+        {
+            findPreference(PreferenceManager.FTP_UPLOAD_TIME).setSummary(preferences.getFtpUploadTimeMs()/1000 + " " + getString(R.string.minutes));
         }
 
         Preference prefCameraSensitivity = findPreference(PreferenceManager.CAMERA_SENSITIVITY);
@@ -337,6 +364,36 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
                     preferences.setEmailPassword(email_password);
                     findPreference(PreferenceManager.EMAIL_PASSWORD).setSummary(email_password);
                 }
+                break;
+            case PreferenceManager.FTP_URL:
+                String url = ((EditTextPreference) findPreference(PreferenceManager.FTP_URL)).getText();
+                if (checkValidString(url)){
+                    preferences.setFtpUrl(url);
+                    findPreference(PreferenceManager.FTP_URL).setSummary(url);
+                }
+                break;
+            case PreferenceManager.FTP_ACCOUNT:
+                String account = ((EditTextPreference) findPreference(PreferenceManager.FTP_ACCOUNT)).getText();
+
+                if (checkValidString(account)){
+                    preferences.setFtpAccount(account);
+                    findPreference(PreferenceManager.FTP_ACCOUNT).setSummary(account);
+                }
+                break;
+            case PreferenceManager.FTP_PASSWORD:
+                String password = ((EditTextPreference) findPreference(PreferenceManager.FTP_PASSWORD)).getText();
+                if (checkValidString(password))
+                {
+                    preferences.setFtpPassword(password);
+                    findPreference(PreferenceManager.FTP_PASSWORD).setSummary(password);
+                }
+                break;
+
+            case PreferenceManager.FTP_UPLOAD_TIME:
+                String time = ((EditTextPreference) findPreference(PreferenceManager.FTP_UPLOAD_TIME)).getText();
+                int uplaod_time = Integer.parseInt(time)*1000;
+                preferences.setFtpUploadTime(uplaod_time);
+                findPreference(PreferenceManager.FTP_UPLOAD_TIME).setSummary(preferences.getFtpUploadTimeMs()/1000 + " " + "秒");
                 break;
 //            case PreferenceManager.REGISTER_SIGNAL:
 //                String signalNum = ((EditTextPreference) findPreference(PreferenceManager.REGISTER_SIGNAL)).getText();

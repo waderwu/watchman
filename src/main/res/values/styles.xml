@@ -30,23 +30,23 @@
 
     <!-- Style for a DialogPreference Entry -->
     <style name="AppPreference.DialogPreferenceRegister">
-        <item name="positiveButtonText">@string/register</item>
-        <item name="negativeButtonText">@android:string/cancel</item>
+        <item name="positiveButtonText">保存</item>
+        <item name="negativeButtonText">取消</item>
     </style>
 
     <style name="AppPreference.DialogPreferenceVerify">
-        <item name="positiveButtonText">@string/verify</item>
-        <item name="negativeButtonText">@android:string/cancel</item>
+        <item name="positiveButtonText">保存</item>
+        <item name="negativeButtonText">取消</item>
     </style>
 
     <style name="AppPreference.DialogPreferenceSendText">
-        <item name="positiveButtonText">@string/send_text_message</item>
-        <item name="negativeButtonText">@android:string/cancel</item>
+        <item name="positiveButtonText">保存</item>
+        <item name="negativeButtonText">取消</item>
     </style>
 
     <style name="AppPreference.DialogPreferenceSave">
-        <item name="positiveButtonText">@string/save_number</item>
-        <item name="negativeButtonText">@android:string/cancel</item>
+        <item name="positiveButtonText">保存</item>
+        <item name="negativeButtonText">取消</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

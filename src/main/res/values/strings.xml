@@ -2,25 +2,25 @@
 
     <string name="app_name" translatable="false">watchman</string>
     <string name="bullets" translatable="false">•••••••</string>
-    <string name="menu_save">Save</string>
-    <string name="menu_about">Setup...</string>
+    <string name="menu_save">保存</string>
+    <string name="menu_about">设置...</string>
 
     <string name="title_activity_start">watchman</string>
 
     <string name="accelerometer_prompt">
-    	Movement Sensitivity
+    	运动敏感度
     </string>
 
     <string name="microphone_sensitivity">
-    	Sound Sensitivity
+    	声音敏感度
     </string>
 
     <string name="timer_delay_label">
-    	Set Delay Time
+    	设置延时
     </string>
 
     <string name="sms_label">
-    	Send SMS or Signal message alerts
+    	使用发送短信或 Signal 发送警告
     </string>
 
     <string name="sms_hint">
@@ -28,125 +28,127 @@
     </string>
 
     <string name="camera_prompt">
-    	Select the camera
+    	选择摄像头
     </string>
 
-    <string name="secure_service_started">watchman Activated</string>
+    <string name="secure_service_started">watchman 已激活</string>
 
-    <string name="intrusion_detected">A watchman sensor was triggered (Type: %s)</string>
-    <string name="title_activity_event">EventActivity</string>
+    <string name="intrusion_detected">(Type: %s) 传感器被触发</string>
+    <string name="title_activity_event">活动事件</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">设置</string>
 
-    <string name="intro1_title">Welcome to watchman</string>
-    <string name="intro1_desc">\"Now when the ark of human fate,\nLong baffled by the wayward wind,\nIs drifting with its peopled freight,\nSAFE watchman on the height find...\"\n-George Meredith</string>
+    <string name="intro1_title"> 欢迎使用 watchman</string>
+    <string name="intro1_desc">\"现在当人类命运的方舟, \n长久以来被风向阻挡, \n正以其人流而漂流, \n在高处发现安全的避难所...\"\n- 乔治·梅瑞迪斯</string>
 
-    <string name="intro2_title">watchman is for people who want to keep an eye out for intrusions into their home, office, hotel room or other private space</string>
-    <string name="intro3_desc">Turn an extra phone into a motion, sound, vibration and light detector, watching for unexpected guests and unwanted intruders</string>
+    <string name="intro2_title">watchman 旨在帮助用户监测他们的家、办公室、酒店房间以及其他私人空间, 当不速之客来临之时发出警示. </string>
+    <string name="intro3_desc">利用闲置手机作为运动、声音、振动和光线探测器, 侦测不速之客和入侵者. </string>
 
-    <string name="intro4_desc">Get notified of intrusion events instantly and access the logs remotely or in-person later</string>
+    <string name="intro4_desc">获取实时入侵事件通知, 并提供日志以供远程或在场访问. </string>
 
-    <string name="intro5_title">Your watchman is ready</string>
-    <string name="intro5_desc">Activate the app at anytime using the &gt; action button on the main screen</string>
+    <string name="intro5_title">你的 watchman 已经就绪</string>
+    <string name="intro5_desc">任何时间你可以通过主屏幕上的 &gt; 按钮来激活 watchman</string>
 
-    <string name="onboarding_action_end">Finish</string>
+    <string name="onboarding_action_end">结束</string>
 
-    <string name="remote_access">Remote Access</string>
-    <string name="remote_access_label">Enable remote access via Tor Onion Service</string>
-    <string name="remote_access_hint">Onion service address from Orbot</string>
+    <string name="remote_access">远程访问</string>
+    <string name="remote_access_label">使用 Tor 洋葱启动远程访问</string>
+    <string name="remote_access_hint">Orbot 提供的 Tor 洋葱地址</string>
     <string name="remote_access_credential_hint">Set remote password</string>
-    <string name="camera_front">Front</string>
-    <string name="camera_back">Back</string>
-    <string name="camera_none">None</string>
+    <string name="camera_front">前置摄像头</string>
+    <string name="camera_back">后置摄像头</string>
+    <string name="camera_none">无摄像头</string>
 
-    <string name="action_configure">Configure</string>
+    <string name="action_configure">设置</string>
 
-    <string name="main_screen_title">Your watchman Log</string>
+    <string name="main_screen_title">你的 watchman 日志</string>
 
-    <string name="current_noise_base">Current noise level is</string>
-    <string name="current_accel_base">Current motion level is</string>
+    <string name="current_noise_base">现在的噪音量为</string>
+    <string name="current_accel_base">现在的运动量为</string>
 
-    <string name="configure_trigger_level">Slide to set detection threshold</string>
-    <string name="tune_the_sound_detection">Make some noise!</string>
-    <string name="set_your_phone_on_the_table_and_make_noises_in_the_room_to_find_the_right_level_to_detect">Set your phone on the table, and make noises in the room to find the right level to detect</string>
+    <string name="configure_trigger_level">滑动以更改侦测阈值</string>
+    <string name="tune_the_sound_detection">制造一些噪音!</string>
+    <string name="set_your_phone_on_the_table_and_make_noises_in_the_room_to_find_the_right_level_to_detect">将手机放在桌子上并且在房间里制造一些噪音, 来校准至合适的噪音侦测阈值</string>
 
-    <string name="tune_the_accel_detection">Shake it up!</string>
-    <string name="tune_the_accel_detection_more">Move your phone around to tune the motion detection threshold</string>
-    <string name="set_a_countdown_time">Tap to change countdown</string>
-    <string name="start_now">Start Now</string>
-    <string name="start_later">View Logs</string>
-    <string name="save_number">Save Number</string>
+    <string name="tune_the_accel_detection">摇一摇!</string>
+    <string name="tune_the_accel_detection_more">移动手机来校准至合适的运动侦测阈值</string>
+    <string name="set_a_countdown_time">轻触来改变倒计时</string>
+    <string name="start_now">现在开始</string>
+    <string name="start_later">查看日志</string>
+    <string name="save_number">保存电话</string>
 
-    <string name="action_cancel">Deactivate</string>
-    <string name="status_on">ACTIVE</string>
-    <string name="status_charging">Charging:</string>
-    <string name="you_will_receive_a_text_when_the_app_hears_or_sees_something">You will receive a text when the app hears or sees something</string>
-    <string name="know_immediately_when_watchman_detects_something">Know immediately when watchman detects something</string>
-    <string name="phone_saved">Phone number saved!</string>
-    <string name="detection_events">detection events</string>
-    <string name="data_speed">SPEED</string>
-    <string name="data_light">LIGHT</string>
-    <string name="data_pressure">PRESSURE</string>
-    <string name="data_power">POWER</string>
-    <string name="share_event_action">Share event...</string>
-    <string name="signal_test_message">This is a test message from watchman</string>
-    <string name="send_test_message">Send Test Message</string>
-    <string name="verify">Verify</string>
-    <string name="register">Register</string>
-    <string name="activate_signal">Activate Signal</string>
-    <string name="verify_signal">Verify Signal</string>
-    <string name="enter_verification">Enter the verification code you received from the Signal registration step</string>
-    <string name="cancel">Cancel</string>
-    <string name="register_title">Register with Signal</string>
-    <string name="register_signal_desc">Enter a phone number to register with Signal, to use to send secure notifications. You can use this device\'s phone number or setup a virtual number.\n\nWARNING: If this number is already configured with a Signal app install, it will stop working there, and only work within watchman.</string>
-    <string name="phone_hint">+12125551212</string>
+    <string name="action_cancel">停止</string>
+    <string name="status_on">已激活</string>
+    <string name="status_charging">充电中:</string>
+    <string name="you_will_receive_a_text_when_the_app_hears_or_sees_something">当 watchman 侦测到异动的时候, 您将会收到短信提示</string>
+    <string name="know_immediately_when_watchman_detects_something">当 watchman 侦测到异动时立即通知</string>
+    <string name="phone_saved">电话号码已保存!</string>
+    <string name="detection_events">侦测事件</string>
+    <string name="data_speed">速度</string>
+    <string name="data_light">亮度</string>
+    <string name="data_pressure">压力</string>
+    <string name="data_power">电量</string>
+    <string name="share_event_action">分享事件...</string>
+    <string name="signal_test_message">这是来自 watchman 的测试消息</string>
+    <string name="send_test_message">发送测试信息</string>
+    <string name="verify">验证</string>
+    <string name="register">注册</string>
+    <string name="activate_signal">激活 Signal</string>
+    <string name="verify_signal">验证 Signal</string>
+    <string name="enter_verification">输入您从 Signal 收到的注册验证码</string>
+    <string name="cancel">取消</string>
+    <string name="register_title">注册 Signal</string>
+    <string name="register_signal_desc">请使用一个新的手机号注册 Signal 用以发送安全通知. 请不要使用您当前的/主要的 Signal 号码. </string>
+    <string name="phone_hint">+8613800138000</string>
 
-    <string name="menu_licenses">Licenses...</string>
-    <string name="sensor_light">Ambient Light</string>
-    <string name="sensor_accel">Motion (Accelerometer)</string>
-    <string name="sensor_camera">Motion (Camera)</string>
-    <string name="sensor_sound">Microphone</string>
-    <string name="sensor_power">USB Power</string>
-    <string name="sensor_bump">Bump (Accelerometer)</string>
-    <string name="sensor_camera_video">Motion (Video)</string>
-    <string name="sensor_unknown">Unknown</string>
+    <string name="menu_licenses">许可协议...</string>
+    <string name="sensor_light">环境光</string>
+    <string name="sensor_accel">运动 (加速度仪)</string>
+    <string name="sensor_camera">运动 (相机)</string>
+    <string name="sensor_sound">麦克风</string>
+    <string name="sensor_power">USB 电源</string>
+    <string name="sensor_bump">碰撞 (加速度仪)</string>
+    <string name="sensor_unknown">不明</string>
 
-    <string name="settings">Settings</string>
-    <string name="remote_access_onion_error">This feature requires the Orbot: Tor for Android app to be installed.</string>
+    <string name="settings">设置</string>
+    <string name="remote_access_onion_error">此功能需要安装 Orbot: Tor for Android.</string>
 
     <!--Preference Settings -->
     <string name="hint_number" translatable="false">+12125551212</string>
-    <string name="sms_dialog_summary">Remote phone number to send notifications to</string>
-    <string name="sms_dialog_message">Enter a remote phone number to send alert notifications to</string>
-    <string name="signal_dialog_summary">A phone number to send from using Signal</string>
-    <string name="verification_dialog_summary">Tap to verify your Signal number</string>
-    <string name="send_message_dialog">Enter a phone number to send a test alert notification message to</string>
-    <string name="send_text_message">Test notifications...</string>
-    <string name="service_address">Service Address</string>
-    <string name="password">Password (Required)</string>
-    <string name="signal_number">Signal Number (Local)</string>
-    <string name="phone_number">Notification Number (Remote)</string>
-    <string name="sensors">Sensors</string>
-    <string name="label_notifications">Notifications</string>
-    <string name="video_active_preference_key">video_active_preference_key</string>
-    <string name="config_video_length_label">Set Video Monitoring Length</string>
-    <string name="video_monitoring">Video Monitoring</string>
-    <string name="video_settings">Video Settings</string>
+    <string name="sms_dialog_summary">用于接受短信通知的号码</string>
+    <string name="sms_dialog_message">输入用于接受短信通知的号码</string>
+    <string name="signal_dialog_summary">用于接受通知的 Signal 号码</string>
+    <string name="verification_dialog_summary">点击验证您的 Signal 号码</string>
+    <string name="send_message_dialog">输入用于接受测试通知的号码</string>
+    <string name="send_text_message">发送测试通知...</string>
+    <string name="service_address">服务地址</string>
+    <string name="password">密码 (必填)</string>
+    <string name="signal_number">Signal 号码 (本地)</string>
+    <string name="phone_number"> 通知号码 (远程)</string>
+    <string name="sensors">传感器</string>
+    <string name="label_notifications">通知</string>
 
-    <string name="camera_sensitivity">Camera Sensitivity</string>
+    <string name="video_active_preference_key">激活视频监控</string>
+    <string name="config_video_length_label">设置视频监控长度</string>
+    <string name="video_monitoring">视频监控</string>
+    <string name="video_settings">视频监控</string>
 
-    <string name="notification_time">Notification Time Interval</string>
-    <string name="notification_time_summary">Only send notifications at configured interval</string>
-    <string name="notification_time_dialog">Enter time (minutes) to limit notifications. \'0\' to send every notification.</string>
-    <string name="minutes">minutes(s)</string>
-    <string name="keep_watch">Keep Watch!</string>
-    <string name="camera_sensitivity_tip">Switch camera or use the slider to adjust motion detection sensitivity</string>
-    <string name="disable_battery_opt_title">Disable Battery Optimizations</string>
-    <string name="disable_battery_opt_summary">Allow app to run when screen is off</string>
-    <string name="event_deleted">Event deleted</string>
-    <string name="undo">UNDO</string>
-    <string name="remove_all_logs">Remove all logs</string>
-    <string name="events_deleted">Events deleted</string>
+    <string name="camera_sensitivity">相机敏感度</string>
+
+    <string name="notification_time">通知间隔</string>
+    <string name="notification_time_summary">仅在特定间隔后发送通知</string>
+    <string name="notification_time_dialog">输入时间 (分钟) 以限制通知, 输入 \'0\' 则会发送所有通知.</string>
+    <string name="minutes">分钟</string>
+    <string name="keep_watch">注意观察!</string>
+    <string name="camera_sensitivity_tip">切换摄像头或滑动调整运动侦测敏感度</string>
+    <string name="disable_battery_opt_title">关闭电池优化</string>
+    <string name="disable_battery_opt_summary">允许 watchman 熄屏后保持运行</string>
+
+
+    <string name="event_deleted">记录已经被删除</string>
+    <string name="undo">撤销</string>
+    <string name="remove_all_logs">删除所有日志</string>
+    <string name="events_deleted">记录已经被删除</string>
 
 
 </resources>

@@ -26,6 +26,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -50,11 +51,15 @@ import com.mikepenz.aboutlibraries.LibsBuilder;
 import org.watchman.main.model.Event;
 import org.watchman.main.service.EmailFetch;
 import org.watchman.main.service.SignalSender;
+import org.watchman.main.service.Ftp;
 import org.watchman.main.service.EmailSender;
 import org.watchman.main.ui.EventActivity;
 import org.watchman.main.ui.EventAdapter;
 import org.watchman.main.ui.PPAppIntro;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -62,7 +67,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.watchman.main.service.EmailSender;
+
 
 public class ListActivity extends AppCompatActivity {
 
@@ -74,6 +79,7 @@ public class ListActivity extends AppCompatActivity {
     private PreferenceManager preferences;
     private Context mcontext = this;
     private String res = null;
+    private Boolean status= false;
 
     private int modifyPos = -1;
 
@@ -329,7 +335,10 @@ public class ListActivity extends AppCompatActivity {
                 testNotifications();
                 break;
             case R.id.action_test_fetchemail:
-                testFetceEmail();
+                testFetchEmail();
+                break;
+            case R.id.action_test_ftp_upload:
+                testFTP();
                 break;
         }
         return true;
@@ -383,7 +392,51 @@ public class ListActivity extends AppCompatActivity {
                 .start(this);
     }
 
-    private void testFetceEmail(){
+    private void testFTP(){
+
+        Log.d("hahahah","ftp upload");
+
+
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Ftp ftp = new Ftp(preferences.getFtpUrl().trim(),21,preferences.getFtpAccount().trim(),preferences.getFtpPassword().trim());
+                    File dir = Environment.getExternalStorageDirectory();
+                    Log.d("test", "run: "+dir);
+                    File test = new File(dir,"/phoneypot/ftp_upload.txt");
+                    if (!test.exists()){
+                        PrintStream ps = new PrintStream(new FileOutputStream(test));
+                        ps.println("test for ftp upload");
+                    }
+                    status = ftp.upload_file(dir+"/phoneypot/ftp_upload.txt","upload/test.txt","hahhahah");
+
+                    Log.d("ftp upload","success");
+
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        thread.start();
+        try{
+            thread.join();
+        }catch (Exception e){
+            Log.e("error",e.getMessage(),e);
+        }
+
+        if (status){
+            Toast.makeText(mcontext,"ftp upload success",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+    private void testFetchEmail(){
         Thread thread = new Thread(new Runnable() {
 
             @Override

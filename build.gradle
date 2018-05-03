@@ -118,6 +118,7 @@ dependencies {
     implementation files('libs/additionnal.jar')
     implementation files('libs/activation.jar')
     implementation files('libs/mail.jar')
+    implementation files('libs/commons-net-3.6.jar')
 
     implementation('com.mikepenz:aboutlibraries:6.0.2@aar') {
         transitive = true

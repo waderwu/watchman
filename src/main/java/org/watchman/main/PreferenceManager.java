@@ -58,6 +58,12 @@ public class PreferenceManager {
 //    public static final String SMS_NUMBER = "sms_number";
 //    public static final String REGISTER_SIGNAL = "register_signal";
 //    public static final String VERIFY_SIGNAL = "verify_signal";
+    public static final String FTP_ACTIVE = "ftp_active";
+    public static final String FTP_URL = "ftp_url";
+    public static final String FTP_ACCOUNT = "ftp_account";
+    public static final String FTP_PASSWORD = "ftp_password";
+    public static final String FTP_UPLOAD_TIME = "ftp_upload_time";
+
     public static final String SEND_SMS = "send_sms";
 
     public static final String EMAIL_ACTIVE = "email_active";
@@ -107,6 +113,42 @@ public class PreferenceManager {
         prefsEditor.putBoolean(FIRST_LAUNCH, firstLaunch);
         prefsEditor.commit();
     }
+
+    public String getFtpUrl()
+    {
+        return appSharedPrefs.getString(FTP_URL,"public.sjtu.edu.cn");
+    }
+
+    public String getFtpAccount()
+    {
+        return appSharedPrefs.getString(FTP_ACCOUNT,null);
+    }
+
+    public String getFtpPassword()
+    {
+        return appSharedPrefs.getString(FTP_PASSWORD,null);
+    }
+
+    public void setFtpUrl(String url)
+    {
+        prefsEditor.putString(FTP_URL,url);
+        prefsEditor.commit();
+    }
+
+    public void setFtpAccount(String account)
+    {
+        prefsEditor.putString(FTP_ACCOUNT,account);
+        prefsEditor.commit();
+    }
+
+    public void setFtpPassword(String password)
+    {
+        prefsEditor.putString(FTP_PASSWORD,password);
+        prefsEditor.commit();
+    }
+
+
+
 
     public String getREmailUsername ()
     {
@@ -266,8 +308,19 @@ public class PreferenceManager {
         prefsEditor.commit();
     }
 
+    public void activateFtp(boolean active)
+    {
+        prefsEditor.putBoolean(FTP_ACTIVE,active);
+        prefsEditor.commit();
+    }
+
     public boolean getEmailActivation() {
         return appSharedPrefs.getBoolean(EMAIL_ACTIVE, true);
+    }
+
+    public boolean getFtpActivation()
+    {
+        return appSharedPrefs.getBoolean(FTP_ACTIVE,true);
     }
     
 //    public void activateSms(boolean active) {
@@ -343,8 +396,19 @@ public class PreferenceManager {
         return appSharedPrefs.getInt(NOTIFICATION_TIME,-1); //time in minutes times by seconds
     }
 
+    public int getFtpUploadTimeMs()
+    {
+        return appSharedPrefs.getInt(FTP_UPLOAD_TIME,-1);
+    }
+
     public void setNotificationTimeMs (int notificationTimeMs) {
         prefsEditor.putInt(NOTIFICATION_TIME,notificationTimeMs);
+        prefsEditor.commit();
+    }
+
+    public void setFtpUploadTime(int uploadTime)
+    {
+        prefsEditor.putInt(FTP_UPLOAD_TIME,uploadTime);
         prefsEditor.commit();
     }
 

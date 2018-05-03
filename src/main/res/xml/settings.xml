@@ -3,23 +3,23 @@
 
     <Preference
         android:key="config_delay_time"
-        android:title="@string/timer_delay_label" />
+        android:title="关闭电池优化" />
 
 
     <Preference
         android:key="config_battery_optimizations"
         android:title="@string/disable_battery_opt_title"
-        android:summary="@string/disable_battery_opt_summary"/>
+        android:summary="允许 watchman 熄屏后保持运行"/>
 
-    <PreferenceCategory android:title="@string/video_settings">
+    <PreferenceCategory android:title="视频监控">
         <Preference
             android:key="config_video_length"
-            android:title="@string/config_video_length_label" />
+            android:title="设置视频监控长度" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/video_active_preference_key"
-            android:title="@string/video_monitoring"/>
+            android:title="视频监控"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/sensors">
@@ -29,23 +29,23 @@
             android:entryValues="@array/camera_alias"
             android:key="camera"
             android:summary="%s"
-            android:title="@string/camera_prompt" />
+            android:title="选择摄像头" />
 
         <Preference
             android:key="camera_sensitivity"
-            android:title="@string/camera_sensitivity" />
+            android:title="相机敏感度" />
 
         <Preference
             android:key="config_sound"
-            android:title="@string/microphone_sensitivity" />
+            android:title="声音敏感度" />
 
         <Preference
             android:key="config_movement"
-            android:title="@string/accelerometer_prompt" />
+            android:title="运动敏感度" />
 
 
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/label_notifications">
+    <PreferenceCategory android:title="通知">
 
         <SwitchPreferenceCompat
             android:defaultValue="true"
@@ -82,9 +82,10 @@
             android:dialogMessage="@string/notification_time_dialog"
             android:inputType="number"
             android:key="notification_time"
-            android:summary="@string/notification_time_summary"
-            android:title="@string/notification_time"
+            android:summary="输入时间（分钟）以限制通知，输入0则会发送所有通知"
+            android:title="通知间隔"
             />
+
 
         <!--<SwitchPreferenceCompat-->
             <!--android:defaultValue="true"-->
@@ -130,6 +131,48 @@
 
 
     </PreferenceCategory>
+
+    <PreferenceCategory android:title="ftp 上传">
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="ftp_active"
+            android:title="使用ftp上传监测到的图片等文件" />
+
+        <EditTextPreference
+            style="@style/AppPreference.DialogPreferenceSave"
+            android:dialogLayout="@layout/pref_dialog_edit_text"
+            android:dialogMessage="请输入ftp服务器地址如：public.sjtu.edu.cn"
+            android:key="ftp_url"
+            android:summary="请输入ftp服务器的地址"
+            android:title="ftp 地址" />
+
+        <EditTextPreference
+            style="@style/AppPreference.DialogPreferenceRegister"
+            android:dialogLayout="@layout/pref_dialog_edit_text"
+            android:dialogMessage="请输入发送ftp账号"
+            android:key="ftp_account"
+            android:summary="ftp 账号"
+            android:title="ftp 上传账号" />
+
+        <EditTextPreference
+            style="@style/AppPreference.DialogPreferenceRegister"
+            android:dialogLayout="@layout/pref_dialog_edit_text"
+            android:dialogMessage="请输入ftp账号对应的密码"
+            android:key="ftp_password"
+            android:summary="ftp 密码"
+            android:title="请输入ftp 密码" />
+
+        <EditTextPreference
+            style="@style/AppPreference.DialogPreferenceSave"
+            android:dialogLayout="@layout/pref_dialog_edit_text"
+            android:dialogMessage="输入时间 (s) 以限制上传, 输入 \'0\' 则会所有都上传"
+            android:inputType="number"
+            android:key="ftp_upload_time"
+            android:summary="请设置ftp 上传的时间间隔"
+            android:title="ftp 上传时间间隔"
+            />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/remote_access">
 
         <SwitchPreferenceCompat
