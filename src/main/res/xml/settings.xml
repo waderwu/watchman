@@ -3,7 +3,7 @@
 
     <Preference
         android:key="config_delay_time"
-        android:title="关闭电池优化" />
+        android:title="设置延时" />
 
 
     <Preference
@@ -71,7 +71,7 @@
         <EditTextPreference
             style="@style/AppPreference.DialogPreferenceRegister"
             android:dialogLayout="@layout/pref_dialog_edit_text"
-            android:dialogMessage="请输入发送邮箱POP密码"
+            android:dialogMessage="请输入发送邮箱POP授权码"
             android:key="email_password"
             android:summary="POP授权码"
             android:title="请输入POP3授权码" />
@@ -132,7 +132,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="ftp 上传">
+    <PreferenceCategory android:title="远程访问">
         <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="ftp_active"
@@ -173,28 +173,28 @@
             />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/remote_access">
+    <!--<PreferenceCategory android:title="@string/remote_access">-->
 
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="remote_access_active"
-            android:summary="@string/remote_access_label"
-            android:title="@string/remote_access" />
+        <!--<SwitchPreferenceCompat-->
+            <!--android:defaultValue="false"-->
+            <!--android:key="remote_access_active"-->
+            <!--android:summary="@string/remote_access_label"-->
+            <!--android:title="@string/remote_access" />-->
 
-        <EditTextPreference
-            android:dialogLayout="@layout/pref_dialog_edit_text"
-            android:dialogMessage="@string/remote_access_hint"
-            android:key="remote_access_onion"
-            android:summary="@string/remote_access_hint"
-            android:title="@string/service_address" />
+        <!--<EditTextPreference-->
+            <!--android:dialogLayout="@layout/pref_dialog_edit_text"-->
+            <!--android:dialogMessage="@string/remote_access_hint"-->
+            <!--android:key="remote_access_onion"-->
+            <!--android:summary="@string/remote_access_hint"-->
+            <!--android:title="@string/service_address" />-->
 
-        <EditTextPreference
-            android:dialogLayout="@layout/pref_dialog_edit_password"
-            android:dialogMessage="@string/remote_access_credential_hint"
-            android:inputType="textPassword"
-            android:key="remote_access_credential"
-            android:summary="@string/remote_access_credential_hint"
-            android:title="@string/password" />
-    </PreferenceCategory>
+        <!--<EditTextPreference-->
+            <!--android:dialogLayout="@layout/pref_dialog_edit_password"-->
+            <!--android:dialogMessage="@string/remote_access_credential_hint"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:key="remote_access_credential"-->
+            <!--android:summary="@string/remote_access_credential_hint"-->
+            <!--android:title="@string/password" />-->
+    <!--</PreferenceCategory>-->
 
 </PreferenceScreen>

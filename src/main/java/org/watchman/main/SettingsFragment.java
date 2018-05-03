@@ -92,23 +92,23 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 //            findPreference(PreferenceManager.SMS_NUMBER).setSummary(R.string.sms_dialog_summary);
 //        }
 
-        if (preferences.getRemoteAccessActive()) {
-            ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).setChecked(true);
-        }
+//        if (preferences.getRemoteAccessActive()) {
+//            ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).setChecked(true);
+//        }
 
-        if (checkValidString(preferences.getRemoteAccessOnion())) {
-            ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_ONION)).setText(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
-            findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
-        } else {
-            findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(R.string.remote_access_hint);
-        }
+//        if (checkValidString(preferences.getRemoteAccessOnion())) {
+//            ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_ONION)).setText(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
+//            findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
+//        } else {
+//            findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(R.string.remote_access_hint);
+//        }
 
-        if (checkValidString(preferences.getRemoteAccessCredential())) {
-            ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_CRED)).setText(preferences.getRemoteAccessCredential().trim());
-            findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.bullets);
-        } else {
-            findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.remote_access_credential_hint);
-        }
+//        if (checkValidString(preferences.getRemoteAccessCredential())) {
+//            ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_CRED)).setText(preferences.getRemoteAccessCredential().trim());
+//            findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.bullets);
+//        } else {
+//            findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.remote_access_credential_hint);
+//        }
 
 //        if (checkValidString(preferences.getSignalUsername())) {
 //            String signalNum = "+" + preferences.getSignalUsername().trim().replaceAll("[^0-9]", "");
@@ -239,16 +239,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
         preferences.setActivateVideoMonitoring(videoMonitoringActive);
 
-        boolean remoteAccessActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).isChecked();
+//        boolean remoteAccessActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).isChecked();
 
-        preferences.activateRemoteAccess(remoteAccessActive);
-        String password = ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_CRED)).getText();
-
-        if (checkValidStrings(password, preferences.getRemoteAccessCredential()) && (TextUtils.isEmpty(preferences.getRemoteAccessCredential()) || !password.trim().equals(preferences.getRemoteAccessCredential().trim()))) {
-            preferences.setRemoteAccessCredential(password.trim());
-            app.stopServer();
-            app.startServer();
-        }
+//        preferences.activateRemoteAccess(remoteAccessActive);
+//        String password = ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_CRED)).getText();
+//
+//        if (checkValidStrings(password, preferences.getRemoteAccessCredential()) && (TextUtils.isEmpty(preferences.getRemoteAccessCredential()) || !password.trim().equals(preferences.getRemoteAccessCredential().trim()))) {
+//            preferences.setRemoteAccessCredential(password.trim());
+//            app.stopServer();
+//            app.startServer();
+//        }
 
         mActivity.setResult(Activity.RESULT_OK);
         mActivity.finish();
@@ -259,17 +259,17 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK && data != null) {
-            String onionHost = data.getStringExtra("hs_host");
-
-            if (checkValidString(onionHost)) {
-                preferences.setRemoteAccessOnion(onionHost.trim());
-                ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_ONION)).setText(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
-                if (checkValidString(preferences.getRemoteAccessOnion())) {
-                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
-                } else {
-                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(R.string.remote_access_hint);
-                }
-            }
+//            String onionHost = data.getStringExtra("hs_host");
+//
+//            if (checkValidString(onionHost)) {
+//                preferences.setRemoteAccessOnion(onionHost.trim());
+//                ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_ONION)).setText(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
+//                if (checkValidString(preferences.getRemoteAccessOnion())) {
+//                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
+//                } else {
+//                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(R.string.remote_access_hint);
+//                }
+//            }
         }
     }
 
@@ -328,15 +328,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 //
 //                setPhoneNumber();
 //                break;
-            case PreferenceManager.REMOTE_ACCESS_ACTIVE:
-                boolean remoteAccessActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).isChecked();
-                if (remoteAccessActive) {
-                    checkRemoteAccessOnion();
-                    app.startServer();
-                } else {
-                    app.stopServer();
-                }
-                break;
+//            case PreferenceManager.REMOTE_ACCESS_ACTIVE:
+//                boolean remoteAccessActive = ((SwitchPreferenceCompat) findPreference(PreferenceManager.REMOTE_ACCESS_ACTIVE)).isChecked();
+//                if (remoteAccessActive) {
+//                    checkRemoteAccessOnion();
+//                    app.startServer();
+//                } else {
+//                    app.stopServer();
+//                }
+//                break;
             case PreferenceManager.REMAIL_USERNAME:
                 Log.d("at","reamil_username");
                 String receive_addr = ((EditTextPreference) findPreference(PreferenceManager.REMAIL_USERNAME)).getText();
@@ -440,28 +440,28 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
                 }
 
                 break;
-            case PreferenceManager.REMOTE_ACCESS_ONION: {
-                String text = ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_ONION)).getText();
-                if (checkValidString(text)) {
-                    preferences.setRemoteAccessOnion(text.trim());
-                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
-                } else {
-                    preferences.setRemoteAccessOnion(text);
-                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(R.string.remote_access_hint);
-                }
-                break;
-            }
-            case PreferenceManager.REMOTE_ACCESS_CRED: {
-                String text = ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_CRED)).getText();
-                if (checkValidString(text)) {
-                    preferences.setRemoteAccessCredential(text.trim());
-                    findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.bullets);
-                } else {
-                    preferences.setRemoteAccessCredential(text);
-                    findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.remote_access_credential_hint);
-                }
-                break;
-            }
+//            case PreferenceManager.REMOTE_ACCESS_ONION: {
+//                String text = ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_ONION)).getText();
+//                if (checkValidString(text)) {
+//                    preferences.setRemoteAccessOnion(text.trim());
+//                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(preferences.getRemoteAccessOnion().trim() + ":" + WebServer.LOCAL_PORT);
+//                } else {
+//                    preferences.setRemoteAccessOnion(text);
+//                    findPreference(PreferenceManager.REMOTE_ACCESS_ONION).setSummary(R.string.remote_access_hint);
+//                }
+//                break;
+//            }
+//            case PreferenceManager.REMOTE_ACCESS_CRED: {
+//                String text = ((EditTextPreference) findPreference(PreferenceManager.REMOTE_ACCESS_CRED)).getText();
+//                if (checkValidString(text)) {
+//                    preferences.setRemoteAccessCredential(text.trim());
+//                    findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.bullets);
+//                } else {
+//                    preferences.setRemoteAccessCredential(text);
+//                    findPreference(PreferenceManager.REMOTE_ACCESS_CRED).setSummary(R.string.remote_access_credential_hint);
+//                }
+//                break;
+//            }
         }
     }
 
@@ -538,17 +538,17 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         }
     }
 
-    private void checkRemoteAccessOnion() {
-        if (OrbotHelper.isOrbotInstalled(mActivity)) {
-            OrbotHelper.requestStartTor(mActivity);
-
-            if (preferences.getRemoteAccessOnion() != null && TextUtils.isEmpty(preferences.getRemoteAccessOnion().trim())) {
-                OrbotHelper.requestHiddenServiceOnPort(mActivity, WebServer.LOCAL_PORT);
-            }
-        } else {
-            Toast.makeText(mActivity, R.string.remote_access_onion_error, Toast.LENGTH_LONG).show();
-        }
-    }
+//    private void checkRemoteAccessOnion() {
+//        if (OrbotHelper.isOrbotInstalled(mActivity)) {
+//            OrbotHelper.requestStartTor(mActivity);
+//
+//            if (preferences.getRemoteAccessOnion() != null && TextUtils.isEmpty(preferences.getRemoteAccessOnion().trim())) {
+//                OrbotHelper.requestHiddenServiceOnPort(mActivity, WebServer.LOCAL_PORT);
+//            }
+//        } else {
+//            Toast.makeText(mActivity, R.string.remote_access_onion_error, Toast.LENGTH_LONG).show();
+//        }
+//    }
 
     private void askForPermission(String permission, Integer requestCode) {
         if (mActivity != null && ContextCompat.checkSelfPermission(mActivity, permission) != PackageManager.PERMISSION_GRANTED) {
