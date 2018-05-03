@@ -12,3 +12,7 @@
  - EmailFetch 用来获取邮件内容，只解析了邮件的subject，通过subject执行指令
  - EmailSender
  - MonitorService
+
+
+### 试用
+在build/outputs/apk/debug/ 文件夹下面下载apk文件
