@@ -15,4 +15,4 @@
 
 
 ### 试用
-在build/outputs/apk/debug/ 文件夹下面下载apk文件
+watchman-1.0-debug.apk 是已经编译好的apk了可以直接运行
