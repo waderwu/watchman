@@ -108,6 +108,7 @@
     <string name="sensor_sound">麦克风</string>
     <string name="sensor_power">USB 电源</string>
     <string name="sensor_bump">碰撞 (加速度仪)</string>
+    <string name="sensor_camera_video">运动 (视频)</string>
     <string name="sensor_unknown">不明</string>
 
     <string name="settings">设置</string>
