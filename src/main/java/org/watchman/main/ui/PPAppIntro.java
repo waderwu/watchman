@@ -62,7 +62,7 @@ public class PPAppIntro extends AppIntro {
 //        addSlide(cs3);
 
         final CustomSlideBigText cs4 =CustomSlideBigText.newInstance(R.layout.custom_slide_big_text);
-        cs4.setTitle("通过邮箱获取入侵事件通知，本地保存日志供在场访问，同时上传到ftp供远程访问");
+        cs4.setTitle(getString(R.string.intro4_desc));
         cs4.showButton("设置账号", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

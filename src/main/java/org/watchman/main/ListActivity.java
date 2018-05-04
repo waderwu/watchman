@@ -328,9 +328,9 @@ public class ListActivity extends AppCompatActivity {
             case R.id.action_about:
                 showOnboarding();
                 break;
-            case R.id.action_licenses:
-                showLicenses();
-                break;
+//            case R.id.action_licenses:
+//                showLicenses();
+//                break;
             case R.id.action_test_notification:
                 testNotifications();
                 break;

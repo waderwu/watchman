@@ -44,7 +44,7 @@
     <string name="intro2_title">watchman 旨在帮助用户监测他们的家、办公室、酒店房间以及其他私人空间, 当不速之客来临之时发出警示. </string>
     <string name="intro3_desc">利用闲置手机作为运动、声音、振动和光线探测器, 侦测不速之客和入侵者. </string>
 
-    <string name="intro4_desc">获取实时入侵事件通知, 并提供日志以供远程或在场访问. </string>
+    <string name="intro4_desc">通过邮箱获取入侵事件通知，本地保存日志供在场访问，同时上传到ftp供远程访问 </string>
 
     <string name="intro5_title">你的 watchman 已经就绪</string>
     <string name="intro5_desc">任何时间你可以通过主屏幕上的 &gt; 按钮来激活 watchman</string>
